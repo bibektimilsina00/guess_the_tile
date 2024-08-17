@@ -1,0 +1,4 @@
+#Sun Aug 18 00:12:19 NPT 2024
+base.0=/Users/bibektimilsina/Godot/guess_the_box/android/build/build/intermediates/dex/release/mergeDexRelease/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

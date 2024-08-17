@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://btlfm605ysb7w"]
+
+[ext_resource type="Texture2D" uid="uid://boyrjtvvuhb32" path="res://assets/ui/UIbg.png" id="1_v04up"]
+[ext_resource type="FontFile" uid="uid://b6p4e6d7cc2vw" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_emykw"]
+[ext_resource type="LabelSettings" uid="uid://bgwwcl661xsx0" path="res://assets/level_button.tres" id="2_wl0uv"]
+[ext_resource type="FontFile" uid="uid://b8u2v4g0wp4l2" path="res://assets/fonts/gemunu-libre-v8-latin-700.ttf" id="3_ptt8k"]
+[ext_resource type="Script" path="res://GameOver/game_over.gd" id="4_6hhf8"]
+[ext_resource type="Texture2D" uid="uid://d3a2ce0dfx8wm" path="res://assets/ui/blue_button00.png" id="4_vrot6"]
+[ext_resource type="Texture2D" uid="uid://mr4umjry7ftd" path="res://assets/ui/yellow_button00.png" id="5_aw6es"]
+[ext_resource type="LabelSettings" uid="uid://2g1m2i6x2vhf" path="res://assets/game_over.tres" id="5_fpthr"]
+[ext_resource type="Texture2D" uid="uid://b2toiu0vgt2jy" path="res://assets/ui/green_button00.png" id="6_3iwya"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wq4r2"]
+font = ExtResource("2_emykw")
+font_size = 84
+font_color = Color(0.0862745, 0.890196, 0.796078, 1)
+outline_size = 6
+outline_color = Color(0.396078, 0.388235, 0.882353, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvsrr"]
+font = ExtResource("3_ptt8k")
+font_size = 32
+font_color = Color(0.294028, 0.294028, 0.294028, 1)
+outline_size = 3
+outline_color = Color(0.00392157, 0.00392157, 0.00392157, 0.678431)
+shadow_color = Color(0, 0, 0, 0.384314)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_6hhf8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -192.0
+offset_right = 256.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_v04up")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="mc" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VB" type="VBoxContainer" parent="NinePatchRect/mc"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="NinePatchRect/mc/VB"]
+layout_mode = 2
+text = "You Win!"
+label_settings = SubResource("LabelSettings_wq4r2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HB" type="HBoxContainer" parent="NinePatchRect/mc/VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/mc/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Moves"
+label_settings = SubResource("LabelSettings_yvsrr")
+
+[node name="MovesLabel" type="Label" parent="NinePatchRect/mc/VB/HB"]
+layout_mode = 2
+text = "000"
+label_settings = ExtResource("5_fpthr")
+
+[node name="Control" type="Control" parent="NinePatchRect/mc/VB"]
+custom_minimum_size = Vector2(2.08165e-12, 32)
+layout_mode = 2
+
+[node name="ExitButton" type="TextureButton" parent="NinePatchRect/mc/VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_vrot6")
+texture_pressed = ExtResource("5_aw6es")
+texture_hover = ExtResource("6_3iwya")
+
+[node name="Label" type="Label" parent="NinePatchRect/mc/VB/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = ExtResource("2_wl0uv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="NinePatchRect/mc/VB/ExitButton" to="." method="_on_exit_button_pressed"]

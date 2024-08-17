@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://u1ah0upha3ob"]
+
+[ext_resource type="Script" path="res://main/main_screen.gd" id="1_y3t3l"]
+[ext_resource type="PackedScene" uid="uid://c05qjo4r1yg7a" path="res://front_sprites/front_sprites.tscn" id="2_by1wx"]
+[ext_resource type="PackedScene" uid="uid://ej58bkal1f4" path="res://level_button/level_button.tscn" id="2_pliq5"]
+[ext_resource type="LabelSettings" uid="uid://bg2lkrq4uohgj" path="res://assets/main_screen.tres" id="3_qv4jj"]
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y3t3l")
+level_button = ExtResource("2_pliq5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.321569, 0.321569, 0.635294, 0.415686)
+
+[node name="VB" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameName" type="Label" parent="VB"]
+layout_mode = 2
+text = "Guess The Box"
+label_settings = ExtResource("3_qv4jj")
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBLevels" type="HBoxContainer" parent="VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Spacer3" type="Control" parent="VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBSprites" type="HBoxContainer" parent="VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 75
+
+[node name="FrontSprites" parent="VB/HBSprites" instance=ExtResource("2_by1wx")]
+layout_mode = 2
+
+[node name="FrontSprites2" parent="VB/HBSprites" instance=ExtResource("2_by1wx")]
+layout_mode = 2
+
+[node name="FrontSprites3" parent="VB/HBSprites" instance=ExtResource("2_by1wx")]
+layout_mode = 2
+
+[node name="FrontSprites4" parent="VB/HBSprites" instance=ExtResource("2_by1wx")]
+layout_mode = 2
+
+[node name="Spacer4" type="Control" parent="VB"]
+layout_mode = 2
+size_flags_vertical = 3
